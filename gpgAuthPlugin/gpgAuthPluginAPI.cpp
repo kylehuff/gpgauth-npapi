@@ -3,7 +3,7 @@
 #include "gpgAuthPluginAPI.h"
 #include "keyedit.h"
 
-/* 
+/*
  * Define non-member methods/inlines
  */
 
@@ -119,7 +119,7 @@ void gpgAuthPluginAPI::init(){
     if (ctx)
         gpgme_release (ctx);
 
-    std::string gpg_agent_info = (char *) getenv("GPG_AGENT_INFO");
+    char *gpg_agent_info = getenv("GPG_AGENT_INFO");
 
     if (error_map.size()) {
         //response = error_map;
@@ -128,7 +128,13 @@ void gpgAuthPluginAPI::init(){
         response["error"] = false;
         response["gpgme_valid"] = true;
     }
-    response["gpg_agent_info"] = gpg_agent_info;
+
+    if (gpg_agent_info != NULL) {
+        response["gpg_agent_info"] = gpg_agent_info;
+    } else {
+        response["gpg_agent_info"] = "unknown";
+    }
+
     response["gpgconf_detected"] = gpgconf_detected();
     response["gpgme_version"] = gpgme_version;
 

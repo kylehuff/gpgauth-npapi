@@ -82,8 +82,9 @@ edit_fnc_sign (void *opaque, gpgme_status_code_t status, const char *args, int f
         WriteFile ((HANDLE) fd, response, strlen (response), &written, 0);
         WriteFile ((HANDLE) fd, "\n", 1, &written, 0);
 #else
-        write (fd, response, strlen (response));
-        write (fd, "\n", 1);
+        ssize_t write_result;
+        write_result = write (fd, response, strlen (response));
+        write_result = write (fd, "\n", 1);
 #endif
     }
     return error;
@@ -150,8 +151,9 @@ edit_fnc_delsign (void *opaque, gpgme_status_code_t status, const char *args, in
         WriteFile ((HANDLE) fd, response, strlen (response), &written, 0);
         WriteFile ((HANDLE) fd, "\n", 1, &written, 0);
 #else
-        write (fd, response, strlen (response));
-        write (fd, "\n", 1);
+        ssize_t write_result;
+        write_result = write (fd, response, strlen (response));
+        write_result = write (fd, "\n", 1);
 #endif
     }
     return 0;
@@ -199,8 +201,9 @@ edit_fnc_disable (void *opaque, gpgme_status_code_t status, const char *args, in
         WriteFile ((HANDLE) fd, response, strlen (response), &written, 0);
         WriteFile ((HANDLE) fd, "\n", 1, &written, 0);
 #else
-        write (fd, response, strlen (response));
-        write (fd, "\n", 1);
+        ssize_t write_result;
+        write_result = write (fd, response, strlen (response));
+        write_result = write (fd, "\n", 1);
 #endif
     }
     return 0;
@@ -245,8 +248,9 @@ edit_fnc_enable (void *opaque, gpgme_status_code_t status, const char *args, int
         WriteFile ((HANDLE) fd, response, strlen (response), &written, 0);
         WriteFile ((HANDLE) fd, "\n", 1, &written, 0);
 #else
-        write (fd, response, strlen (response));
-        write (fd, "\n", 1);
+        ssize_t write_result;
+        write_result = write (fd, response, strlen (response));
+        write_result = write (fd, "\n", 1);
 #endif
     }
     return 0;

@@ -7,6 +7,7 @@ set(PLUGIN_VERSION "1.0.3b")
 set(PLUGIN_NAME "gpgAuthPlugin")
 set(PLUGIN_PREFIX "GAU")
 set(COMPANY_NAME "CURETHEITCH")
+set(CMAKE_BUILD_TYPE MinSizeRel)
 
 # Set MAC drawing methods to 0 and disable the GUI
 set(FB_GUI_DISABLED 1)

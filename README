@@ -28,11 +28,20 @@ Mac OSX:
 
 firebreath/prepmac.sh . build
 
+(or to specify i386: firebreath/prepmac.sh . build -DCMAKE_OSX_ARCHITECTURES=i386 -DCMAKE_BUILD_TYPE=MinSizeRel)
+
 Build gpgAuth Plugin
 ====================
 * cd ./build
+
+Linux:
 * make gpgAuthPlugin
 
+Mac OSX:
+xcodebuild -target gpgAuthPlugin
+
+MS Windows:
+cmake --build . --config MinSizeRel --target gpgAuthPlugin
 
 Load the Plugin in the Chrome gpgAuth extension
 =========================

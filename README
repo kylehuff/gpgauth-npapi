@@ -1,9 +1,17 @@
-This is a firebreath NPAPI plugin project
+Description
+====================
+gpgauth-npapi is an NPAPI plugin project that provides gpgAuth related Public Key/Private Key operations for use with gpgAuth client-side browser implementations.
+
+This is a firebreath NPAPI plugin project, and this repository includes a submodule of FireBreath 1.4
+
+Current Version: v1.0.3b
+
 
 Building Dependencies
 =====================
 * cmake
 * development headers and libraries for libgpgme and gpg-error
+
 
 Prep Build Environment
 ======================
@@ -30,6 +38,7 @@ firebreath/prepmac.sh . build
 
 (or to specify i386: firebreath/prepmac.sh . build -DCMAKE_OSX_ARCHITECTURES=i386 -DCMAKE_BUILD_TYPE=MinSizeRel)
 
+
 Build gpgAuth Plugin
 ====================
 * cd ./build
@@ -43,15 +52,14 @@ xcodebuild -target gpgAuthPlugin
 MS Windows:
 cmake --build . --config MinSizeRel --target gpgAuthPlugin
 
-Load the Plugin in the Chrome gpgAuth extension
-=========================
-* cd /path/to/gpgauth/gpgauth-chrome/plugin/linux/
-* ln -s /path/to/firebreath/build/bin/gpgAuthPlugin/npgpgAuthPlugin.so .
-* Go into Chrome and navigate to chrome:extensions
-* Switch to developer mode
-* Click 'Load unpacked extension'
-* Navigate to /path/to/gpgauth/gpgauth-chrome and click 'ok'
 
-The plugin should be loaded now.
-Nagivate to http://gpgauth.org/tests/head_test.php
-=======
+Move/Copy the plugin file to someplace accessible by the browser/extension
+====================
+Under linux, you can find the compiled .so file under:
+build/bin/gpgAuthPlugin/npgpgAuthPlugin.so
+
+Under Windows you can find the compiled .dll file under:
+build\bin\gpgAuthPlugin\MinSizeRel\npgpgAuthPlugin.dll
+
+Under Mac OSX you can find the compiled .plugin file under:
+build/projects/gpgAuthPlugin/MinSizeRel/gpgAuthPlugin.plugin

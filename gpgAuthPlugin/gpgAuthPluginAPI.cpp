@@ -65,11 +65,12 @@ gpgAuthPluginAPI::gpgAuthPluginAPI(gpgAuthPluginPtr plugin, FB::BrowserHostPtr h
     registerProperty("version",
                      make_property(this,
                         &gpgAuthPluginAPI::get_version));
-
+    // FIXME: This is set on init and never refreshed - however the values may change during runtime
     registerProperty("gpg_status",
                     make_property(this,
                         &gpgAuthPluginAPI::get_gpg_status));
 
+    // FIXME: This is set on init and never refreshed - however the value may change during runtime
     registerProperty("gpgconf_detected",
                      make_property(this,
                         &gpgAuthPluginAPI::gpgconf_detected));

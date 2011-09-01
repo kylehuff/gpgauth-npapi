@@ -15,7 +15,12 @@ Building Dependencies
 
 Prep Build Environment
 ======================
-From the root of this repository, type one of the following - depending on your OS:
+From the root of this repository, do the following:
+
+
+git submodule update --recursive --init
+
+Next, type one of the following, depending on your OS:
 
 Linux:
 
@@ -47,7 +52,7 @@ Linux:
 * make gpgAuthPlugin
 
 Mac OSX:
-xcodebuild -target gpgAuthPlugin
+xcodebuild -configuration MinSizeRel -target gpgAuthPlugin ARCHS="i386"
 
 MS Windows:
 cmake --build . --config MinSizeRel --target gpgAuthPlugin

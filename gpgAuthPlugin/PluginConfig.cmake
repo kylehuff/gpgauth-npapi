@@ -1,21 +1,15 @@
 #/**********************************************************\ 
+#
 # Auto-Generated Plugin Configuration file
-# for gpgAuth
+# for gpgauth-plugin
+#
 #\**********************************************************/
 
-set(PLUGIN_VERSION "1.0.3b")
+set(PLUGIN_VERSION "1.2.0")
 set(PLUGIN_NAME "gpgAuthPlugin")
 set(PLUGIN_PREFIX "GAU")
 set(COMPANY_NAME "CURETHEITCH")
 set(CMAKE_BUILD_TYPE MinSizeRel)
-
-# Set MAC drawing methods to 0 and disable the GUI
-set(FB_GUI_DISABLED 1)
-set(FBMAC_USE_CARBON 0)
-set(FBMAC_USE_COCOA 0)
-set(FBMAC_USE_QUICKDRAW 0)
-set(FBMAC_USE_COREGRAPHICS 0)
-set(FBMAC_USE_COREANIMATION 0)
 
 # ActiveX constants:
 set(FBTYPELIB_NAME gpgAuthClientLib)
@@ -43,10 +37,28 @@ set(MOZILLA_PLUGINID "curetheitch.com/gpgAuthClient")
 set(FBSTRING_CompanyName "CURE|THE|ITCH")
 set(FBSTRING_FileDescription "gpgAuth web authentication plugin version ${PLUGIN_VERSION} for authentication using GnuPG/PGP")
 set(FBSTRING_PLUGIN_VERSION "${PLUGIN_VERSION}")
-set(FBSTRING_LegalCopyright "Copyright 2010 CURE|THE|ITCH")
-set(FBSTRING_PluginFileName "gpgAuth-v${PLUGIN_VERSION}.dll")
+set(FBSTRING_LegalCopyright "Copyright 2012 CURE|THE|ITCH")
+set(FBSTRING_PluginFileName "np${PLUGIN_NAME}-v${FBSTRING_PLUGIN_VERSION}.dll")
 set(FBSTRING_ProductName "gpgAuth")
 set(FBSTRING_FileExtents "")
 set(FBSTRING_PluginName "gpgAuth")
+set(FBSTRING_PluginDescription "Provider for GnuPG/PGP Authentication protocol gpgAuth")
 set(FBSTRING_MIMEType "application/x-gpgauth")
 
+# Uncomment this next line if you're not planning on your plugin doing
+# any drawing:
+
+set (FB_GUI_DISABLED 1)
+
+# Mac plugin settings. If your plugin does not draw, set these all to 0
+set(FBMAC_USE_QUICKDRAW 0)
+set(FBMAC_USE_CARBON 0)
+set(FBMAC_USE_COCOA 0)
+set(FBMAC_USE_COREGRAPHICS 0)
+set(FBMAC_USE_COREANIMATION 0)
+set(FBMAC_USE_INVALIDATINGCOREANIMATION 0)
+
+# If you want to register per-machine on Windows, uncomment this line
+#set (FB_ATLREG_MACHINEWIDE 1)
+
+add_firebreath_library(jsoncpp)

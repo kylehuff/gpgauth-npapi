@@ -7,6 +7,8 @@
 
 #include "PluginCore.h"
 
+
+FB_FORWARD_PTR(gpgAuthPlugin)
 class gpgAuthPlugin : public FB::PluginCore
 {
 public:
@@ -18,28 +20,33 @@ public:
     virtual ~gpgAuthPlugin();
 
 public:
-	void onPluginReady();
+    void onPluginReady();
+    void shutdown();
     virtual FB::JSAPIPtr createJSAPI();
-    virtual bool IsWindowless() { return true; }
+    // If you want your plugin to always be windowless, set this to true
+    // If you want your plugin to be optionally windowless based on the
+    // value of the "windowless" param tag, remove this method or return
+    // FB::PluginCore::isWindowless()
+    virtual bool isWindowless() { return true; }
+    std::string getPluginPath() { return m_filesystemPath; }
+    FB::variant getPluginParams() { return m_params; }
 
     BEGIN_PLUGIN_EVENT_MAP()
-//        EVENTTYPE_CASE(FB::MouseDownEvent, onMouseDown, FB::PluginWindow)
-//        EVENTTYPE_CASE(FB::MouseUpEvent, onMouseUp, FB::PluginWindow)
-//        EVENTTYPE_CASE(FB::MouseMoveEvent, onMouseMove, FB::PluginWindow)
-//        EVENTTYPE_CASE(FB::MouseMoveEvent, onMouseMove, FB::PluginWindow)
-//        EVENTTYPE_CASE(FB::AttachedEvent, onWindowAttached, FB::PluginWindow)
-//        EVENTTYPE_CASE(FB::DetachedEvent, onWindowDetached, FB::PluginWindow)
+        EVENTTYPE_CASE(FB::MouseDownEvent, onMouseDown, FB::PluginWindow)
+        EVENTTYPE_CASE(FB::MouseUpEvent, onMouseUp, FB::PluginWindow)
+        EVENTTYPE_CASE(FB::MouseMoveEvent, onMouseMove, FB::PluginWindow)
+        EVENTTYPE_CASE(FB::MouseMoveEvent, onMouseMove, FB::PluginWindow)
+        EVENTTYPE_CASE(FB::AttachedEvent, onWindowAttached, FB::PluginWindow)
+        EVENTTYPE_CASE(FB::DetachedEvent, onWindowDetached, FB::PluginWindow)
     END_PLUGIN_EVENT_MAP()
 
-//    /** BEGIN EVENTDEF -- DON'T CHANGE THIS LINE **/
-//    virtual bool onMouseDown(FB::MouseDownEvent *evt, FB::PluginWindow *);
-//    virtual bool onMouseUp(FB::MouseUpEvent *evt, FB::PluginWindow *);
-//    virtual bool onMouseMove(FB::MouseMoveEvent *evt, FB::PluginWindow *);
-//    virtual bool onWindowAttached(FB::AttachedEvent *evt, FB::PluginWindow *);
-//    virtual bool onWindowDetached(FB::DetachedEvent *evt, FB::PluginWindow *);
-//    /** END EVENTDEF -- DON'T CHANGE THIS LINE **/
+    /** BEGIN EVENTDEF -- DON'T CHANGE THIS LINE **/
+    virtual bool onMouseDown(FB::MouseDownEvent *evt, FB::PluginWindow *);
+    virtual bool onMouseUp(FB::MouseUpEvent *evt, FB::PluginWindow *);
+    virtual bool onMouseMove(FB::MouseMoveEvent *evt, FB::PluginWindow *);
+    virtual bool onWindowAttached(FB::AttachedEvent *evt, FB::PluginWindow *);
+    virtual bool onWindowDetached(FB::DetachedEvent *evt, FB::PluginWindow *);
+    /** END EVENTDEF -- DON'T CHANGE THIS LINE **/
 };
-typedef boost::shared_ptr<gpgAuthPlugin> gpgAuthPluginPtr;
-typedef boost::weak_ptr<gpgAuthPlugin> gpgAuthPluginWeakPtr;
 
 #endif

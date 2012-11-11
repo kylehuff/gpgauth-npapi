@@ -5,7 +5,7 @@
 #
 #\**********************************************************/
 
-set(PLUGIN_VERSION "1.2.0")
+set(PLUGIN_VERSION "1.1.2")
 set(PLUGIN_NAME "gpgAuthPlugin")
 set(PLUGIN_PREFIX "GAU")
 set(COMPANY_NAME "CURETHEITCH")
